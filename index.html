@@ -3,850 +3,899 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Monu Prajapati | Biostatistician & Survival Analysis </title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <title>Monu Prajapati | Biostatistician & Statistical Programmer</title>
+  <meta name="description" content="Portfolio of Monu Prajapati, Biostatistician specializing in survival analysis, clinical data analysis, and statistical programming with SAS, R, SPSS & Stata."/>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
     :root {
-      --navy: #0a1628;
-      --blue: #1a3a6b;
-      --sky: #2a6fdb;
-      --accent: #4fc3f7;
-      --teal: #00b4d8;
-      --white: #ffffff;
-      --off-white: #f4f7fc;
-      --muted: #8a99b3;
-      --text: #1c2a40;
-      --card-bg: #ffffff;
-      --border: #e0e9f5;
+      /* Professional Color Palette */
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #64748b;
+      --background: #ffffff;
+      --background-alt: #f8fafc;
+      --surface: #f1f5f9;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --border: #e2e8f0;
+      --success: #10b981;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --radius: 12px;
+      --radius-sm: 8px;
+      --transition: all 0.3s ease;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      font-family: 'DM Sans', sans-serif;
-      color: var(--text);
-      background: var(--white);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--background);
       overflow-x: hidden;
     }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1.2rem 6%;
-      background: rgba(10,22,40,0.96);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+    /* Typography */
+    h1, h2, h3, h4 {
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 0.75em;
     }
-    .nav-logo {
-      font-family: 'DM Serif Display', serif;
-      color: var(--white); font-size: 1.3rem; letter-spacing: -0.02em;
-    }
-    .nav-logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a {
-      color: rgba(255,255,255,0.7); text-decoration: none;
-      font-size: 0.875rem; font-weight: 500; letter-spacing: 0.04em;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--accent); }
-    .nav-cta {
-      background: var(--sky); color: var(--white);
-      padding: 0.55rem 1.4rem; border-radius: 6px;
-      font-size: 0.875rem; font-weight: 600;
-      text-decoration: none; transition: background 0.2s, transform 0.2s;
-    }
-    .nav-cta:hover { background: var(--teal); transform: translateY(-1px); }
 
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      background: var(--navy);
-      display: flex; align-items: center;
-      position: relative; overflow: hidden;
-      padding: 0 6%;
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
     }
-    .hero-bg-grid {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(42,111,219,0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(42,111,219,0.08) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-    .hero-glow {
-      position: absolute; width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(42,111,219,0.22) 0%, transparent 70%);
-      top: -100px; right: -100px; pointer-events: none;
-    }
-    .hero-glow2 {
-      position: absolute; width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(0,180,216,0.12) 0%, transparent 70%);
-      bottom: -80px; left: 10%; pointer-events: none;
-    }
-    .hero-content {
-      position: relative; z-index: 2;
-      max-width: 760px;
-      animation: fadeUp 0.9s ease both;
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: rgba(42,111,219,0.18);
-      border: 1px solid rgba(79,195,247,0.3);
-      padding: 0.4rem 1rem; border-radius: 100px;
-      color: var(--accent); font-size: 0.8rem; font-weight: 500;
-      letter-spacing: 0.06em; text-transform: uppercase;
-      margin-bottom: 1.8rem;
-    }
-    .hero-badge::before {
-      content: ''; width: 6px; height: 6px;
-      background: var(--accent); border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(1.4); }
-    }
-    .hero h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(2.8rem, 6vw, 4.5rem);
-      color: var(--white); line-height: 1.1;
-      letter-spacing: -0.03em; margin-bottom: 0.4rem;
-    }
-    .hero h1 em { color: var(--accent); font-style: italic; }
-    .hero-title {
-      font-size: clamp(1rem, 2vw, 1.25rem);
-      color: var(--teal); font-weight: 500;
-      letter-spacing: 0.04em; margin-bottom: 1.5rem;
-    }
-    .hero p {
-      font-size: 1.05rem; color: rgba(255,255,255,0.65);
-      max-width: 580px; line-height: 1.75; margin-bottom: 2.5rem;
-    }
-    .hero-tags {
-      display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.5rem;
-    }
-    .hero-tag {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.75);
-      padding: 0.3rem 0.85rem; border-radius: 100px;
-      font-size: 0.78rem; font-weight: 500;
-    }
-    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-primary {
-      display: inline-block;
-      background: linear-gradient(135deg, var(--sky), var(--teal));
-      color: var(--white); padding: 0.85rem 2rem;
-      border-radius: 8px; font-weight: 600; font-size: 0.95rem;
-      text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 4px 20px rgba(42,111,219,0.4);
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(42,111,219,0.5); }
-    .btn-secondary {
-      display: inline-block;
-      border: 1.5px solid rgba(255,255,255,0.25);
-      color: rgba(255,255,255,0.85); padding: 0.85rem 2rem;
-      border-radius: 8px; font-weight: 500; font-size: 0.95rem;
-      text-decoration: none; transition: border-color 0.2s, background 0.2s;
-    }
-    .btn-secondary:hover { border-color: var(--accent); background: rgba(79,195,247,0.08); }
 
-    .hero-stats {
-      display: flex; gap: 3rem; margin-top: 4rem;
-      padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.08);
+    h2 {
+      font-size: 2rem;
+      position: relative;
+      padding-bottom: 0.5rem;
     }
-    .stat-num {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2rem; color: var(--white); display: block;
-    }
-    .stat-label { font-size: 0.8rem; color: var(--muted); }
 
-    /* ── SECTIONS SHARED ── */
-    section { padding: 6rem 6%; }
-    .section-tag {
-      display: inline-block;
-      color: var(--sky); font-size: 0.8rem; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      margin-bottom: 0.8rem;
-    }
-    .section-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      color: var(--navy); line-height: 1.15;
-      letter-spacing: -0.02em; margin-bottom: 1rem;
-    }
-    .section-sub {
-      font-size: 1rem; color: #6b7d99; max-width: 500px; line-height: 1.7;
-    }
-    .section-header { margin-bottom: 3.5rem; }
-
-    /* ── SERVICES ── */
-    #services { background: var(--off-white); }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-    }
-    .service-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 2rem;
-      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
-      position: relative; overflow: hidden;
-    }
-    .service-card::before {
+    h2::after {
       content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--sky), var(--teal));
-      opacity: 0; transition: opacity 0.3s;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
     }
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 16px 50px rgba(26,58,107,0.12);
-      border-color: rgba(42,111,219,0.2);
-    }
-    .service-card:hover::before { opacity: 1; }
-    .service-icon {
-      width: 52px; height: 52px; border-radius: 12px;
-      background: linear-gradient(135deg, rgba(42,111,219,0.12), rgba(0,180,216,0.12));
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1.3rem; font-size: 1.5rem;
-    }
-    .service-card h3 {
-      font-size: 1.1rem; font-weight: 600; color: var(--navy);
-      margin-bottom: 0.7rem;
-    }
-    .service-card p { font-size: 0.9rem; color: #6b7d99; line-height: 1.65; }
 
-    /* ── PORTFOLIO ── */
-    #portfolio { background: var(--white); }
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
+    h3 {
+      font-size: 1.35rem;
+      margin-bottom: 0.5rem;
     }
-    .portfolio-card {
-      border: 1px solid var(--border);
-      border-radius: 14px; overflow: hidden;
-      transition: transform 0.25s, box-shadow 0.25s;
-      text-decoration: none; color: inherit;
-      display: block; background: var(--white);
-    }
-    .portfolio-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 16px 50px rgba(26,58,107,0.12);
-    }
-    .portfolio-card-top {
-      height: 160px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 3.5rem;
-      position: relative; overflow: hidden;
-    }
-    .port-r { background: linear-gradient(135deg, #1a3a6b 0%, #2a6fdb 100%); }
-    .port-spss { background: linear-gradient(135deg, #0a2a5e 0%, #1a6faa 100%); }
-    .port-stata { background: linear-gradient(135deg, #003d5c 0%, #00b4d8 100%); }
-    .portfolio-card-body { padding: 1.5rem; }
-    .portfolio-card-body h3 { font-size: 1.05rem; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; }
-    .portfolio-card-body p { font-size: 0.875rem; color: #6b7d99; line-height: 1.6; margin-bottom: 1rem; }
-    .port-link {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      color: var(--sky); font-size: 0.85rem; font-weight: 600;
-    }
-    .port-link::after { content: '→'; transition: transform 0.2s; }
-    .portfolio-card:hover .port-link::after { transform: translateX(4px); }
 
-    /* ── PROJECTS ── */
-    #projects { background: var(--off-white); }
-    .projects-notice {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: rgba(42,111,219,0.08);
-      border: 1px solid rgba(42,111,219,0.2);
-      border-radius: 8px; padding: 0.7rem 1.2rem;
-      margin-bottom: 3rem; font-size: 0.875rem; color: var(--blue);
+    p {
+      margin-bottom: 1rem;
+      color: var(--text-secondary);
     }
-    .projects-notice strong { font-weight: 600; }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    a:hover {
+      color: var(--primary-dark);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .section-note {
+      text-align: center;
+      color: var(--secondary);
+      font-size: 0.95rem;
+      margin-bottom: 2.5rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      padding: 1rem 0;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--text-primary);
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      padding: 0.25rem 0;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .mobile-toggle {
+      display: none;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 8rem 0 5rem;
+      background: linear-gradient(135deg, var(--background-alt) 0%, var(--background) 100%);
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-name {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-title {
+      font-size: 1.35rem;
+      color: var(--primary);
+      font-weight: 500;
+      margin-bottom: 1.25rem;
+      font-family: 'JetBrains Mono', monospace;
+      line-height: 1.4;
+    }
+
+    .hero-description {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      max-width: 750px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.75rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-weight: 500;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn i {
+      font-size: 1.1rem;
+    }
+
+    /* Projects Section */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
+      gap: 2rem;
     }
+
     .project-card {
-      background: var(--white);
+      background: var(--background);
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.8rem;
-      display: flex; flex-direction: column;
-      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
-      position: relative;
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
+
     .project-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 14px 45px rgba(26,58,107,0.11);
-      border-color: rgba(42,111,219,0.25);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--primary);
     }
-    .project-card-header {
-      display: flex; align-items: flex-start;
-      justify-content: space-between; gap: 1rem;
-      margin-bottom: 1rem;
-    }
-    .project-icon {
-      width: 46px; height: 46px; flex-shrink: 0;
-      border-radius: 10px;
-      background: linear-gradient(135deg, rgba(42,111,219,0.12), rgba(0,180,216,0.12));
-      display: flex; align-items: center; justify-content: center;
+
+    .project-card h3 {
+      margin-bottom: 0.75rem;
+      color: var(--text-primary);
       font-size: 1.3rem;
     }
-    .project-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: flex-end; }
-    .project-badge {
-      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.04em;
-      padding: 0.2rem 0.6rem; border-radius: 100px;
-      background: rgba(42,111,219,0.08); color: var(--sky);
-      border: 1px solid rgba(42,111,219,0.15);
-    }
-    .project-badge.msc { background: rgba(0,180,216,0.08); color: var(--teal); border-color: rgba(0,180,216,0.2); }
-    .project-badge.personal { background: rgba(107,125,153,0.1); color: #6b7d99; border-color: rgba(107,125,153,0.2); }
-    .project-card h3 {
-      font-size: 1rem; font-weight: 600; color: var(--navy);
-      margin-bottom: 0.6rem; line-height: 1.35;
-    }
+
     .project-card p {
-      font-size: 0.875rem; color: #6b7d99; line-height: 1.65;
-      margin-bottom: 1.4rem; flex: 1;
+      flex-grow: 1;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
     }
-    .project-footer {
-      display: flex; align-items: center; justify-content: space-between;
-      padding-top: 1rem; border-top: 1px solid var(--border);
-      flex-wrap: wrap; gap: 0.6rem;
-    }
-    .project-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-    .project-tag {
-      font-size: 0.7rem; color: var(--muted);
-      background: var(--off-white); border: 1px solid var(--border);
-      padding: 0.2rem 0.55rem; border-radius: 100px;
-    }
+
     .project-link {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      background: var(--navy); color: var(--white);
-      padding: 0.45rem 1rem; border-radius: 6px;
-      font-size: 0.8rem; font-weight: 600; text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
-      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--primary);
+      font-weight: 500;
+      font-size: 0.95rem;
+      margin-top: auto;
+      transition: var(--transition);
     }
-    .project-link:hover { background: var(--sky); transform: translateY(-1px); }
-    .project-link svg { width: 14px; height: 14px; fill: currentColor; }
-    /* Multi-link card */
-    .project-multi-links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .project-link-small {
-      display: inline-flex; align-items: center; gap: 0.35rem;
-      border: 1.5px solid var(--border); color: var(--sky);
-      padding: 0.38rem 0.85rem; border-radius: 6px;
-      font-size: 0.78rem; font-weight: 600; text-decoration: none;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .project-link-small:hover { border-color: var(--sky); background: rgba(42,111,219,0.05); }
 
-    /* ── ABOUT ── */
-    #about { background: var(--navy); color: var(--white); }
-    #about .section-title { color: var(--white); }
-    #about .section-sub { color: rgba(255,255,255,0.55); }
-    .about-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 5rem; align-items: center;
+    .project-link:hover {
+      gap: 0.7rem;
+      color: var(--primary-dark);
     }
-    .about-text p {
-      color: rgba(255,255,255,0.65); line-height: 1.8; margin-bottom: 1.2rem;
-      font-size: 0.975rem;
-    }
-    .about-highlights {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1rem; margin-top: 2rem;
-    }
-    .highlight-card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 10px; padding: 1.2rem;
-    }
-    .highlight-card h4 { color: var(--accent); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.4rem; }
-    .highlight-card p { color: rgba(255,255,255,0.7); font-size: 0.875rem; line-height: 1.5; }
-    .about-visual {
-      display: flex; flex-direction: column; gap: 1.2rem;
-    }
-    .skill-bar-item { }
-    .skill-bar-label {
-      display: flex; justify-content: space-between;
-      margin-bottom: 0.4rem; font-size: 0.85rem;
-      color: rgba(255,255,255,0.7); font-weight: 500;
-    }
-    .skill-bar-track {
-      height: 6px; background: rgba(255,255,255,0.08);
-      border-radius: 100px; overflow: hidden;
-    }
-    .skill-bar-fill {
-      height: 100%; border-radius: 100px;
-      background: linear-gradient(90deg, var(--sky), var(--teal));
-      animation: growBar 1.5s ease both;
-    }
-    @keyframes growBar { from { width: 0 !important; } }
 
-    /* ── CONTACT ── */
-    #contact { background: var(--off-white); }
-    .contact-wrapper {
-      max-width: 700px; margin: 0 auto; text-align: center;
+    .project-link i {
+      font-size: 1rem;
+      transition: transform 0.2s ease;
     }
-    .contact-wrapper .section-title { color: var(--navy); }
-    .contact-wrapper .section-sub { margin: 0 auto 2.5rem; }
-    .contact-cards {
-      display: flex; justify-content: center; gap: 1.2rem;
-      flex-wrap: wrap; margin-bottom: 2.5rem;
+
+    .project-link:hover i {
+      transform: translateX(3px);
     }
-    .contact-card {
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: 12px; padding: 1.4rem 2rem;
-      display: flex; align-items: center; gap: 1rem;
-      text-decoration: none; color: var(--text);
-      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+
+    /* Guides Section */
+    .guides-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
     }
-    .contact-card:hover {
+
+    .guide-card {
+      background: var(--background);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      text-align: center;
+      transition: var(--transition);
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .guide-card:hover {
+      border-color: var(--primary);
       transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(26,58,107,0.1);
-      border-color: rgba(42,111,219,0.3);
+      box-shadow: var(--shadow);
     }
-    .contact-icon {
-      width: 42px; height: 42px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem;
-    }
-    .contact-icon.email { background: rgba(42,111,219,0.1); }
-    .contact-icon.linkedin { background: rgba(0,119,181,0.1); }
-    .contact-info strong { display: block; font-size: 0.875rem; color: var(--navy); font-weight: 600; }
-    .contact-info span { font-size: 0.8rem; color: var(--muted); }
-    .contact-cta {
-      background: linear-gradient(135deg, var(--sky), var(--teal));
-      color: var(--white); padding: 1rem 2.5rem;
-      border-radius: 8px; font-weight: 600; font-size: 1rem;
-      text-decoration: none; display: inline-block;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 6px 24px rgba(42,111,219,0.35);
-    }
-    .contact-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(42,111,219,0.45); }
 
-    /* ── FOOTER ── */
+    .guide-card i {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .guide-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .guide-card span {
+      color: var(--secondary);
+      font-size: 0.9rem;
+      display: block;
+      margin-top: 0.25rem;
+    }
+
+    /* Skills Section */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .skill-category h3 {
+      margin-bottom: 1.25rem;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .skill-category h3 i {
+      color: var(--primary);
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .skill-badge {
+      background: var(--surface);
+      color: var(--text-primary);
+      padding: 0.45rem 1rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .skill-badge:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    /* About Section */
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about-content p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .highlight {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* Contact Section */
+    .contact-intro {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 2.5rem;
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+    }
+
+    .contact-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      padding: 1rem 1.25rem;
+      background: var(--background-alt);
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      border: 1px solid var(--border);
+    }
+
+    .contact-item:hover {
+      background: var(--surface);
+      transform: translateX(4px);
+      border-color: var(--primary);
+    }
+
+    .contact-item i {
+      font-size: 1.4rem;
+      color: var(--primary);
+      min-width: 24px;
+    }
+
+    .contact-item a, .contact-item span {
+      color: var(--text-primary);
+      font-weight: 500;
+      word-break: break-all;
+    }
+
+    .contact-item a:hover {
+      color: var(--primary);
+    }
+
+    /* Footer */
     footer {
-      background: var(--navy);
-      padding: 2rem 6%;
-      display: flex; justify-content: space-between; align-items: center;
-      border-top: 1px solid rgba(255,255,255,0.07);
-      flex-wrap: wrap; gap: 1rem;
-    }
-    footer p { color: rgba(255,255,255,0.4); font-size: 0.825rem; }
-    footer span { color: var(--accent); }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+      background: var(--background-alt);
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--secondary);
+      font-size: 0.95rem;
     }
 
-    /* ── RESPONSIVE ── */
+    footer p {
+      margin: 0;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      h1 { font-size: 2.25rem; }
+      h2 { font-size: 1.75rem; }
+      .hero { padding: 7rem 0 4rem; }
+      .hero-name { font-size: 2.5rem; }
+      .hero-title { font-size: 1.25rem; }
+    }
+
     @media (max-width: 768px) {
-      nav { padding: 1rem 5%; }
-      .nav-links { display: none; }
-      section { padding: 4rem 5%; }
-      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .about-highlights { grid-template-columns: 1fr; }
-      .hero-stats { gap: 2rem; flex-wrap: wrap; }
-      footer { flex-direction: column; text-align: center; }
+      .mobile-toggle { display: block; }
+      
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--background);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.25rem;
+        border-bottom: 1px solid var(--border);
+        transform: translateY(-150%);
+        transition: var(--transition);
+        box-shadow: var(--shadow);
+      }
+      
+      .nav-links.active {
+        transform: translateY(0);
+      }
+      
+      .hero { padding: 6rem 0 3.5rem; }
+      .hero-name { font-size: 2.25rem; }
+      .hero-title { font-size: 1.15rem; }
+      .hero-description { font-size: 1.05rem; }
+      
+      .section { padding: 4rem 0; }
+      
+      .container { padding: 0 1.5rem; }
+      
+      .hero-buttons { flex-direction: column; align-items: center; }
+      .btn { width: 100%; max-width: 300px; justify-content: center; }
+      
+      .project-card { padding: 1.5rem; }
     }
 
-    /* Hamburger for mobile */
-    .nav-hamburger {
-      display: none; flex-direction: column; gap: 5px;
-      cursor: pointer; padding: 5px;
+    @media (max-width: 480px) {
+      h1 { font-size: 2rem; }
+      .hero-name { font-size: 2rem; }
+      .section-title h2 { font-size: 1.6rem; }
+      .contact-item { flex-direction: column; text-align: center; gap: 0.5rem; }
+      .contact-item i { margin-bottom: 0.25rem; }
     }
-    .nav-hamburger span {
-      display: block; width: 22px; height: 2px;
-      background: rgba(255,255,255,0.8); border-radius: 2px;
-      transition: 0.3s;
+
+    /* Accessibility & Print */
+    @media print {
+      header, footer, .hero-buttons, .project-link, .guide-card, .contact-item {
+        page-break-inside: avoid;
+      }
+      body { font-size: 12pt; color: #000; background: #fff; }
+      a { color: #000; text-decoration: underline; }
     }
-    @media (max-width: 768px) {
-      .nav-hamburger { display: flex; }
+
+    /* Smooth scroll offset for fixed header */
+    section {
+      scroll-margin-top: 80px;
+    }
+
+    /* Focus states for accessibility */
+    a:focus, button:focus, .nav-links a:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    /* Reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition: none !important;
+        animation: none !important;
+      }
+      html {
+        scroll-behavior: auto;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Monu<span>Prajapati</span></div>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#guides">Guides</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">Monu <span>Prajapati</span></div>
-  <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#portfolio">Guides</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a href="#contact" class="nav-cta">Hire Me</a>
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-bg-grid"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-glow2"></div>
-  <div class="hero-content">
-    <div class="hero-badge">Fresher Biostatistician · Open to Opportunities</div>
-    <h1>Monu <em>Prajapati</em></h1>
-    <div class="hero-title">Biostatistician &nbsp;·&nbsp; Survival Analysis </div>
-    <p>
-      I turn complex biomedical data into clear, publication-ready insights. Specializing in survival analysis, clinical data modeling, and statistical consulting for researchers, clinicians, and healthcare organizations.
-    </p>
-    <div class="hero-tags">
-      <span class="hero-tag">Kaplan–Meier</span>
-      <span class="hero-tag">Cox PH Model</span>
-      <span class="hero-tag">R</span>
-      <span class="hero-tag">SAS</span>
-      <span class="hero-tag">SPSS</span>
-      <span class="hero-tag">Stata</span>
-      <span class="hero-tag">Clinical Trials</span>
-    </div>
-    <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Contact for Statistical Analysis</a>
-      <a href="#projects" class="btn-secondary">View My Projects</a>
-    </div>
-    <div class="hero-stats">
-      <div>
-        <span class="stat-num">5+</span>
-        <span class="stat-label">Academic Projects</span>
-      </div>
-      <div>
-        <span class="stat-num">4</span>
-        <span class="stat-label">Statistical Tools</span>
-      </div>
-      <div>
-        <span class="stat-num">3</span>
-        <span class="stat-label">Self-Made Guides</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services">
-  <div class="section-header">
-    <span class="section-tag">What I Offer</span>
-    <h2 class="section-title">Statistical Services</h2>
-    <p class="section-sub">Comprehensive biostatistical support — from study design to final reporting.</p>
-  </div>
-  <div class="services-grid">
-    <div class="service-card">
-      <div class="service-icon">📈</div>
-      <h3>Survival Analysis</h3>
-      <p>Kaplan–Meier curves, log-rank tests, Cox Proportional Hazards modeling, time-to-event data analysis for clinical and epidemiological research.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🏥</div>
-      <h3>Clinical & Medical Data Analysis</h3>
-      <p>End-to-end analysis of clinical trial and observational study data, including data cleaning, exploratory analysis, and inferential modeling.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🔬</div>
-      <h3>Statistical Consulting</h3>
-      <p> guidance on study design, sample size calculation, hypothesis formulation, and selection of appropriate statistical tests for your research.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">📄</div>
-      <h3>Research Support</h3>
-      <p>Assistance with data interpretation, results writeup, manuscript preparation, and producing publication-quality tables, figures, and forest plots.</p>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-header">
-    <span class="section-tag">Academic & Personal Work</span>
-    <h2 class="section-title">Projects</h2>
-    <p class="section-sub">A collection of academic, MSc, and personal learning projects demonstrating my statistical skills and analytical approach.</p>
-  </div>
-  <div class="projects-notice">
-    <span>📌</span>
-    <span><strong>Note:</strong> These are academic and personal learning projects, not professional client work. They reflect my training, coursework, and self-directed learning as a fresher biostatistician.</span>
-  </div>
-  <div class="projects-grid">
-
-    <!-- 1. Survival Analysis -->
-    <div class="project-card">
-      <div class="project-card-header">
-        <div class="project-icon">🧬</div>
-        <div class="project-badges">
-          <span class="project-badge">Academic</span>
-          <span class="project-badge">R</span>
-        </div>
-      </div>
-      <h3>Survival Analysis — METABRIC Breast Cancer Dataset</h3>
-      <p>Academic project analyzing breast cancer survival data using Kaplan–Meier estimation and Cox proportional hazards model in R. Includes data cleaning, visualization, and interpretation of survival outcomes.</p>
-      <div class="project-footer">
-        <div class="project-tags">
-          <span class="project-tag">Kaplan–Meier</span>
-          <span class="project-tag">Cox PH</span>
-          <span class="project-tag">R</span>
-        </div>
-        <a class="project-link" href="https://github.com/Monu7433/Survival_Analysis_Project" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          View Project
-        </a>
-      </div>
-    </div>
-
-    <!-- 2. MSc Chronic Disease -->
-    <div class="project-card">
-      <div class="project-card-header">
-        <div class="project-icon">📊</div>
-        <div class="project-badges">
-          <span class="project-badge msc">MSc Thesis</span>
-          <span class="project-badge">SAS</span>
-        </div>
-      </div>
-      <h3>Chronic Disease Analysis — MSc Project</h3>
-      <p>Master's thesis project analyzing chronic disease data using SAS and SPSS. Applied logistic regression and statistical modeling to identify associated risk factors and disease determinants.</p>
-      <div class="project-footer">
-        <div class="project-tags">
-          <span class="project-tag">SAS</span>
-          <span class="project-tag">SPSS</span>
-          <span class="project-tag">Logistic Regression</span>
-        </div>
-        <a class="project-link" href="https://github.com/Monu7433/MSc-Chronic-Disease-Analysis" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          View Project
-        </a>
-      </div>
-    </div>
-
-    <!-- 3. NHANES EDA -->
-    <div class="project-card">
-      <div class="project-card-header">
-        <div class="project-icon">🔍</div>
-        <div class="project-badges">
-          <span class="project-badge">Academic</span>
-          <span class="project-badge">R</span>
-        </div>
-      </div>
-      <h3>NHANES Exploratory Data Analysis in R</h3>
-      <p>Exploratory data analysis of the NHANES public health dataset using R. Covers data preprocessing, missing value handling, visualization, and descriptive statistical summaries.</p>
-      <div class="project-footer">
-        <div class="project-tags">
-          <span class="project-tag">R</span>
-          <span class="project-tag">EDA</span>
-          <span class="project-tag">ggplot2</span>
-        </div>
-        <a class="project-link" href="https://github.com/Monu7433/NHANES-EDA-R" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          View Project
-        </a>
-      </div>
-    </div>
-
-    <!-- 4. Netflix EDA -->
-    <div class="project-card">
-      <div class="project-card-header">
-        <div class="project-icon">🎬</div>
-        <div class="project-badges">
-          <span class="project-badge personal">Personal / Learning</span>
-        </div>
-      </div>
-      <h3>Netflix EDA — Beginner Data Analysis Project</h3>
-      <p>Beginner-level exploratory data analysis using Python, Pandas, and visualization libraries to understand content patterns and trends in the Netflix dataset. A personal project to practice Python data skills.</p>
-      <div class="project-footer">
-        <div class="project-tags">
-          <span class="project-tag">Python</span>
-          <span class="project-tag">Pandas</span>
-          <span class="project-tag">Matplotlib</span>
-        </div>
-        <a class="project-link" href="https://github.com/Monu7433/netflix_eda" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          View Project
-        </a>
-      </div>
-    </div>
-
-    <!-- 5. Statistical Guides -->
-    <div class="project-card" style="grid-column: span 1;">
-      <div class="project-card-header">
-        <div class="project-icon">📚</div>
-        <div class="project-badges">
-          <span class="project-badge">Self-Created</span>
-          <span class="project-badge">Learning Resource</span>
-        </div>
-      </div>
-      <h3>R, SPSS & Stata Statistical Guides</h3>
-      <p>Self-created learning resources and tutorials covering survival analysis, regression, and statistical modeling across three tools. Built to help students and researchers apply biostatistical methods step by step.</p>
-      <div class="project-footer" style="flex-direction: column; align-items: flex-start; gap: 0.8rem;">
-        <div class="project-tags">
-          <span class="project-tag">R</span>
-          <span class="project-tag">SPSS</span>
-          <span class="project-tag">Stata</span>
-          <span class="project-tag">Tutorial</span>
-        </div>
-        <div class="project-multi-links">
-          <a class="project-link-small" href="https://monu7433.github.io/R_Guide/" target="_blank" rel="noopener">R Guide →</a>
-          <a class="project-link-small" href="https://monu7433.github.io/Spss_Guide/" target="_blank" rel="noopener">SPSS Guide →</a>
-          <a class="project-link-small" href="https://monu7433.github.io/stata-guide/" target="_blank" rel="noopener">Stata Guide →</a>
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-name">Monu Prajapati</h1>
+        <p class="hero-title">Biostatistician | SAS Programmer | Statistical Programmer 
+        <p class="hero-description">
+          Portfolio showcasing academic and self-initiated projects in survival analysis, clinical data analysis, and statistical programming, with applications in clinical and public health research.
+        </p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn"><i class="fas fa-folder-open"></i> View Projects</a>
+          <a href="https://monu7433.github.io/SAS_Guide/" class="btn btn-outline" target="_blank" rel="noopener"><i class="fas fa-book"></i> View SAS Guide</a>
+          <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> Contact</a>
         </div>
       </div>
     </div>
+  </section>
 
-  </div>
-</section>
-
-<!-- PORTFOLIO -->
-<section id="portfolio">
-  <div class="section-header">
-    <span class="section-tag">My Work</span>
-    <h2 class="section-title">Guides & Resources</h2>
-    <p class="section-sub">Comprehensive, hands-on statistical guides built for researchers and students.</p>
-  </div>
-  <div class="portfolio-grid">
-    <a class="portfolio-card" href="https://monu7433.github.io/R_Guide/" target="_blank" rel="noopener">
-      <div class="portfolio-card-top port-r">
-        <span style="color:#fff;font-family:'DM Serif Display',serif;font-size:2rem;letter-spacing:-0.03em;">R</span>
+  <!-- Projects Section -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-title">
+        <h2>Academic and Personal Projects</h2>
       </div>
-      <div class="portfolio-card-body">
-        <h3>R Statistical Guide</h3>
-        <p>A complete guide to biostatistical analysis in R — from data wrangling to survival modeling and visualization.</p>
-        <span class="port-link">View Guide</span>
-      </div>
-    </a>
-    <a class="portfolio-card" href="https://monu7433.github.io/Spss_Guide/" target="_blank" rel="noopener">
-      <div class="portfolio-card-top port-spss">
-        <span style="color:#fff;font-family:'DM Serif Display',serif;font-size:2rem;letter-spacing:-0.03em;">SPSS</span>
-      </div>
-      <div class="portfolio-card-body">
-        <h3>SPSS Guide</h3>
-        <p>Step-by-step SPSS tutorials covering descriptive statistics, regression, chi-square tests, and more for health researchers.</p>
-        <span class="port-link">View Guide</span>
-      </div>
-    </a>
-    <a class="portfolio-card" href="https://monu7433.github.io/stata-guide/" target="_blank" rel="noopener">
-      <div class="portfolio-card-top port-stata">
-        <span style="color:#fff;font-family:'DM Serif Display',serif;font-size:2rem;letter-spacing:-0.03em;">Stata</span>
-      </div>
-      <div class="portfolio-card-body">
-        <h3>Stata Guide</h3>
-        <p>Practical Stata walkthroughs for epidemiological and clinical data analysis, including panel data and logistic regression.</p>
-        <span class="port-link">View Guide</span>
-      </div>
-    </a>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-grid">
-    <div class="about-text">
-      <span class="section-tag" style="color:var(--accent);">About Me</span>
-      <h2 class="section-title">Turning Data Into Clinical Clarity</h2>
-      <p>
-        I am a fresher biostatistician with a strong academic foundation in survival analysis and health data science. Through my MSc coursework and self-directed projects, I have developed practical skills in statistical modeling and data analysis.
+      <p class="section-note">
+        These projects demonstrate my academic training and practical skills in statistical programming and biostatistics.
       </p>
-      <p>
-        My academic work includes analyzing the <strong style="color:rgba(255,255,255,0.85);">METABRIC breast cancer dataset</strong>, applying Cox Proportional Hazards models and Kaplan–Meier estimators to study disease progression and patient survival outcomes.
+      
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card">
+          <h3>Survival Analysis — METABRIC Breast Cancer Dataset</h3>
+          <p>Performed survival analysis using Kaplan–Meier estimation and Cox Proportional Hazards models in SAS and R. Included data preprocessing, handling of censored data, and interpretation of hazard ratios.</p>
+          <a href="https://github.com/Monu7433/Survival_Analysis_Project" class="project-link" target="_blank" rel="noopener">
+            View Project <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        
+        <!-- Project 2 -->
+        <div class="project-card">
+          <h3>Chronic Disease Analysis — NFHS Secondary Data</h3>
+          <p>Analyzed national health survey data using SAS, SPSS, and R. Applied logistic regression to identify risk factors and interpret associations with chronic diseases.</p>
+          <a href="https://github.com/Monu7433/MSc-Chronic-Disease-Analysis" class="project-link" target="_blank" rel="noopener">
+            View Project <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        
+        <!-- Project 3 -->
+        <div class="project-card">
+          <h3>NHANES Exploratory Data Analysis</h3>
+          <p>Conducted exploratory data analysis using R, including data cleaning, visualization, and descriptive statistical analysis.</p>
+          <a href="https://github.com/Monu7433/NHANES-EDA-R" class="project-link" target="_blank" rel="noopener">
+            View Project <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        
+        <!-- Project 4 -->
+        <div class="project-card">
+          <h3>Netflix Exploratory Data Analysis</h3>
+          <p>Performed exploratory analysis using Python to understand dataset structure, trends, and distributions.</p>
+          <a href="https://github.com/Monu7433/netflix_eda" class="project-link" target="_blank" rel="noopener">
+            View Project <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guides Section -->
+  <section class="section" id="guides" style="background: var(--background-alt);">
+    <div class="container">
+      <div class="section-title">
+        <h2>Statistical Programming Guides</h2>
+      </div>
+      <p class="section-note">
+        Self-developed educational guides demonstrating statistical programming concepts and workflows in SAS, R, SPSS, and Stata.
       </p>
-      <p>
-        I have also worked with <strong style="color:rgba(255,255,255,0.85);">NFHS (National Family Health Survey)</strong> data as part of my studies, exploring public health indicators, reproductive health patterns, and child nutrition across India.
+      
+      <div class="guides-grid">
+        <a href="https://monu7433.github.io/SAS_Guide/" class="guide-card" target="_blank" rel="noopener">
+          <i class="fas fa-file-code"></i>
+          <h3>SAS Guide</h3>
+          <span>monu7433.github.io/SAS_Guide</span>
+        </a>
+        
+        <a href="https://monu7433.github.io/R_Guide/" class="guide-card" target="_blank" rel="noopener">
+          <i class="fab fa-r-project"></i>
+          <h3>R Guide</h3>
+          <span>monu7433.github.io/R_Guide</span>
+        </a>
+        
+        <a href="https://monu7433.github.io/SPSS_Guide/" class="guide-card" target="_blank" rel="noopener">
+          <i class="fas fa-chart-bar"></i>
+          <h3>SPSS Guide</h3>
+          <span>monu7433.github.io/SPSS_Guide</span>
+        </a>
+        
+        <a href="https://monu7433.github.io/Stata_Guide/" class="guide-card" target="_blank" rel="noopener">
+          <i class="fas fa-database"></i>
+          <h3>Stata Guide</h3>
+          <span>monu7433.github.io/Stata_Guide</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="section-title">
+        <h2>Technical Skills</h2>
+      </div>
+      
+      <div class="skills-container">
+        <div class="skill-category">
+          <h3><i class="fas fa-laptop-code"></i> Statistical Software</h3>
+          <div class="skills-list">
+            <span class="skill-badge">SAS</span>
+            <span class="skill-badge">R</span>
+            <span class="skill-badge">SPSS</span>
+            <span class="skill-badge">Stata</span>
+            <span class="skill-badge">Excel</span>
+            <span class="skill-badge">Python (Pandas)</span>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3><i class="fas fa-brain"></i> Statistical Methods</h3>
+          <div class="skills-list">
+            <span class="skill-badge">Survival Analysis</span>
+            <span class="skill-badge">Kaplan–Meier Estimation</span>
+            <span class="skill-badge">Cox Proportional Hazards Model</span>
+            <span class="skill-badge">Logistic Regression</span>
+            <span class="skill-badge">Statistical Modeling</span>
+            <span class="skill-badge">Data Visualization</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section" id="about" style="background: var(--background-alt);">
+    <div class="container">
+      <div class="section-title">
+        <h2>About Me</h2>
+      </div>
+      <div class="about-content">
+        <p>
+          I am a Biostatistician and Gold Medalist in Applied Statistics with academic experience in survival analysis, clinical data analysis, and statistical programming using SAS and R.
+        </p>
+        <p>
+          My work includes analysis of clinical and public health datasets, applying survival models, regression techniques, and statistical programming methods.
+        </p>
+        <p>
+          This portfolio presents my academic projects and programming guides, demonstrating my readiness for entry-level roles in biostatistics and statistical programming.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Get In Touch</h2>
+      </div>
+      
+      <p class="contact-intro">
+        Available for entry-level opportunities in biostatistics and statistical programming.
       </p>
-      <div class="about-highlights">
-        <div class="highlight-card">
-          <h4>Oncology</h4>
-          <p>METABRIC Breast Cancer Survival Analysis</p>
+      
+      <div class="contact-container">
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:prajapatimonu7433@gmail.com">prajapatimonu7433@gmail.com</a>
         </div>
-        <div class="highlight-card">
-          <h4>Public Health</h4>
-          <p>NFHS National Survey Data Analysis</p>
+        
+        <div class="contact-item">
+          <i class="fab fa-linkedin"></i>
+          <a href="https://www.linkedin.com/in/monu-prajapati-9ba4b4221/" target="_blank" rel="noopener">linkedin.com/in/monu-prajapati</a>
         </div>
-        <div class="highlight-card">
-          <h4>Methods</h4>
-          <p>KM, Cox PH, Logistic, Mixed Models</p>
+        
+        <div class="contact-item">
+          <i class="fab fa-github"></i>
+          <a href="https://github.com/Monu7433" target="_blank" rel="noopener">github.com/Monu7433</a>
         </div>
-        <div class="highlight-card">
-          <h4>Tools</h4>
-          <p>R, SAS, SPSS, Stata</p>
+        
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <span>+91 74338 63551</span>
         </div>
       </div>
     </div>
-    <div class="about-visual">
-      <div class="skill-bar-item">
-        <div class="skill-bar-label"><span>R Programming</span><span>95%</span></div>
-        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:95%"></div></div>
-      </div>
-      <div class="skill-bar-item">
-        <div class="skill-bar-label"><span>Survival Analysis</span><span>92%</span></div>
-        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:92%"></div></div>
-      </div>
-      <div class="skill-bar-item">
-        <div class="skill-bar-label"><span>SPSS</span><span>88%</span></div>
-        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:88%"></div></div>
-      </div>
-      <div class="skill-bar-item">
-        <div class="skill-bar-label"><span>Stata</span><span>85%</span></div>
-        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div>
-      </div>
-      <div class="skill-bar-item">
-        <div class="skill-bar-label"><span>SAS</span><span>80%</span></div>
-        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div>
-      </div>
-      <div class="skill-bar-item">
-        <div class="skill-bar-label"><span>Clinical Data Analysis</span><span>90%</span></div>
-        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div>
-      </div>
-      <div style="margin-top:2rem; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:1.5rem;">
-        <p style="color:rgba(255,255,255,0.5);font-size:0.8rem;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.8rem;">Currently Seeking</p>
-        <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.7;">Research collaborations · Academic project support · Entry-level biostatistics roles · Freelance statistical assistance</p>
-      </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>Personal portfolio for job applications and academic demonstration.</p>
+      <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.9;">
+        &copy; <span id="year"></span> Monu Prajapati. All rights reserved.
+      </p>
     </div>
-  </div>
-</section>
+  </footer>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact-wrapper">
-    <span class="section-tag">Get In Touch</span>
-    <h2 class="section-title">Let's Work Together</h2>
-    <p class="section-sub">Open to academic collaborations, research assistance, freelance statistical projects, and entry-level opportunities. Feel free to reach out!</p>
-    <div class="contact-cards">
-      <a href="mailto:prajapatimonu7433@gmail.com" class="contact-card">
-        <div class="contact-icon email">✉️</div>
-        <div class="contact-info">
-          <strong>prajapatimonu7433@gmail.com</strong>
-          <span>Email — preferred for project inquiries</span>
-        </div>
-      </a>
-      <a href="https://www.linkedin.com/in/monu-prajapati-9ba4b4221/" target="_blank" rel="noopener" class="contact-card">
-        <div class="contact-icon linkedin">🔗</div>
-        <div class="contact-info">
-          <strong>LinkedIn Profile</strong>
-          <span>Connect for academic & professional network</span>
-        </div>
-      </a>
-      <a href="tel:+917433863551" class="contact-card">
-        <div class="contact-icon" style="background:rgba(0,180,216,0.1);">📞</div>
-        <div class="contact-info">
-          <strong>+91 74338 63551</strong>
-          <span>Available for calls (India, IST)</span>
-        </div>
-      </a>
-    </div>
-    <a href="mailto:prajapatimonu7433@gmail.com" class="contact-cta">Contact for Statistical Analysis</a>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <p>© 2025 <span>Monu Prajapati</span>. Fresher Biostatistician · Survival Analysis · R · SAS · SPSS · Stata</p>
-  <p style="color:rgba(255,255,255,0.3);font-size:0.78rem;"><a href="mailto:prajapatimonu7433@gmail.com" style="color:rgba(255,255,255,0.35);text-decoration:none;">prajapatimonu7433@gmail.com</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/monu-prajapati-9ba4b4221/" style="color:rgba(255,255,255,0.35);text-decoration:none;" target="_blank">LinkedIn</a></p>
-</footer>
-
+  <!-- JavaScript -->
+  <script>
+    // Mobile navigation toggle
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+    
+    mobileToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      mobileToggle.innerHTML = navLinks.classList.contains('active') 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+    
+    // Dynamic year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Smooth scroll for anchor links (enhanced compatibility)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Add subtle animation on scroll for project cards
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+    
+    // Observe project cards
+    document.querySelectorAll('.project-card, .guide-card').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+      observer.observe(card);
+    });
+  </script>
 </body>
 </html>
