@@ -1,901 +1,1862 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Monu Prajapati | Biostatistician & Statistical Programmer</title>
-  <meta name="description" content="Portfolio of Monu Prajapati, Biostatistician specializing in survival analysis, clinical data analysis, and statistical programming with SAS, R, SPSS & Stata."/>
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <style>
-    :root {
-      /* Professional Color Palette */
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --secondary: #64748b;
-      --background: #ffffff;
-      --background-alt: #f8fafc;
-      --surface: #f1f5f9;
-      --text-primary: #0f172a;
-      --text-secondary: #475569;
-      --border: #e2e8f0;
-      --success: #10b981;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      --radius: 12px;
-      --radius-sm: 8px;
-      --transition: all 0.3s ease;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      line-height: 1.6;
-      color: var(--text-primary);
-      background: var(--background);
-      overflow-x: hidden;
-    }
-
-    /* Typography */
-    h1, h2, h3, h4 {
-      font-weight: 600;
-      line-height: 1.3;
-      margin-bottom: 0.75em;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-    }
-
-    h2 {
-      font-size: 2rem;
-      position: relative;
-      padding-bottom: 0.5rem;
-    }
-
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 60px;
-      height: 4px;
-      background: var(--primary);
-      border-radius: 2px;
-    }
-
-    h3 {
-      font-size: 1.35rem;
-      margin-bottom: 0.5rem;
-    }
-
-    p {
-      margin-bottom: 1rem;
-      color: var(--text-secondary);
-    }
-
-    a {
-      color: var(--primary);
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    a:hover {
-      color: var(--primary-dark);
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    .section {
-      padding: 5rem 0;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .section-title h2::after {
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .section-note {
-      text-align: center;
-      color: var(--secondary);
-      font-size: 0.95rem;
-      margin-bottom: 2.5rem;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* Header & Navigation */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      z-index: 1000;
-      padding: 1rem 0;
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-weight: 700;
-      font-size: 1.25rem;
-      color: var(--text-primary);
-    }
-
-    .logo span {
-      color: var(--primary);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--text-secondary);
-      font-weight: 500;
-      font-size: 0.95rem;
-      position: relative;
-      padding: 0.25rem 0;
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--primary);
-      transition: var(--transition);
-    }
-
-    .nav-links a:hover {
-      color: var(--primary);
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .mobile-toggle {
-      display: none;
-      font-size: 1.5rem;
-      background: none;
-      border: none;
-      color: var(--text-primary);
-      cursor: pointer;
-    }
-
-    /* Hero Section */
-    .hero {
-      padding: 8rem 0 5rem;
-      background: linear-gradient(135deg, var(--background-alt) 0%, var(--background) 100%);
-      text-align: center;
-    }
-
-    .hero-content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .hero-name {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-title {
-      font-size: 1.35rem;
-      color: var(--primary);
-      font-weight: 500;
-      margin-bottom: 1.25rem;
-      font-family: 'JetBrains Mono', monospace;
-      line-height: 1.4;
-    }
-
-    .hero-description {
-      font-size: 1.15rem;
-      color: var(--text-secondary);
-      margin-bottom: 2rem;
-      max-width: 750px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.85rem 1.75rem;
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: var(--radius-sm);
-      font-weight: 500;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: var(--transition);
-      text-align: center;
-    }
-
-    .btn:hover {
-      background: var(--primary-dark);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-hover);
-    }
-
-    .btn-outline {
-      background: transparent;
-      border: 2px solid var(--primary);
-      color: var(--primary);
-    }
-
-    .btn-outline:hover {
-      background: var(--primary);
-      color: white;
-    }
-
-    .btn i {
-      font-size: 1.1rem;
-    }
-
-    /* Projects Section */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .project-card {
-      background: var(--background);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.75rem;
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-
-    .project-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-hover);
-      border-color: var(--primary);
-    }
-
-    .project-card h3 {
-      margin-bottom: 0.75rem;
-      color: var(--text-primary);
-      font-size: 1.3rem;
-    }
-
-    .project-card p {
-      flex-grow: 1;
-      margin-bottom: 1.5rem;
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-    }
-
-    .project-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      color: var(--primary);
-      font-weight: 500;
-      font-size: 0.95rem;
-      margin-top: auto;
-      transition: var(--transition);
-    }
-
-    .project-link:hover {
-      gap: 0.7rem;
-      color: var(--primary-dark);
-    }
-
-    .project-link i {
-      font-size: 1rem;
-      transition: transform 0.2s ease;
-    }
-
-    .project-link:hover i {
-      transform: translateX(3px);
-    }
-
-    /* Guides Section */
-    .guides-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .guide-card {
-      background: var(--background);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      text-align: center;
-      transition: var(--transition);
-      display: block;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .guide-card:hover {
-      border-color: var(--primary);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow);
-    }
-
-    .guide-card i {
-      font-size: 2.5rem;
-      color: var(--primary);
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    .guide-card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-      color: var(--text-primary);
-    }
-
-    .guide-card span {
-      color: var(--secondary);
-      font-size: 0.9rem;
-      display: block;
-      margin-top: 0.25rem;
-    }
-
-    /* Skills Section */
-    .skills-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2.5rem;
-    }
-
-    .skill-category h3 {
-      margin-bottom: 1.25rem;
-      font-size: 1.3rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--text-primary);
-    }
-
-    .skill-category h3 i {
-      color: var(--primary);
-    }
-
-    .skills-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-
-    .skill-badge {
-      background: var(--surface);
-      color: var(--text-primary);
-      padding: 0.45rem 1rem;
-      border-radius: 50px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      border: 1px solid var(--border);
-      transition: var(--transition);
-    }
-
-    .skill-badge:hover {
-      background: var(--primary);
-      color: white;
-      border-color: var(--primary);
-      transform: translateY(-1px);
-    }
-
-    /* About Section */
-    .about-content {
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .about-content p {
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-    }
-
-    .highlight {
-      color: var(--primary);
-      font-weight: 600;
-    }
-
-    /* Contact Section */
-    .contact-intro {
-      text-align: center;
-      max-width: 650px;
-      margin: 0 auto 2.5rem;
-      color: var(--text-secondary);
-      font-size: 1.05rem;
-    }
-
-    .contact-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.25rem;
-      max-width: 600px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      width: 100%;
-      padding: 1rem 1.25rem;
-      background: var(--background-alt);
-      border-radius: var(--radius-sm);
-      transition: var(--transition);
-      border: 1px solid var(--border);
-    }
-
-    .contact-item:hover {
-      background: var(--surface);
-      transform: translateX(4px);
-      border-color: var(--primary);
-    }
-
-    .contact-item i {
-      font-size: 1.4rem;
-      color: var(--primary);
-      min-width: 24px;
-    }
-
-    .contact-item a, .contact-item span {
-      color: var(--text-primary);
-      font-weight: 500;
-      word-break: break-all;
-    }
-
-    .contact-item a:hover {
-      color: var(--primary);
-    }
-
-    /* Footer */
-    footer {
-      background: var(--background-alt);
-      border-top: 1px solid var(--border);
-      padding: 2rem 0;
-      text-align: center;
-      color: var(--secondary);
-      font-size: 0.95rem;
-    }
-
-    footer p {
-      margin: 0;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 992px) {
-      h1 { font-size: 2.25rem; }
-      h2 { font-size: 1.75rem; }
-      .hero { padding: 7rem 0 4rem; }
-      .hero-name { font-size: 2.5rem; }
-      .hero-title { font-size: 1.25rem; }
-    }
-
-    @media (max-width: 768px) {
-      .mobile-toggle { display: block; }
-      
-      .nav-links {
-        position: fixed;
-        top: 70px;
-        left: 0;
-        right: 0;
-        background: var(--background);
-        flex-direction: column;
-        padding: 2rem;
-        gap: 1.25rem;
-        border-bottom: 1px solid var(--border);
-        transform: translateY(-150%);
-        transition: var(--transition);
-        box-shadow: var(--shadow);
-      }
-      
-      .nav-links.active {
-        transform: translateY(0);
-      }
-      
-      .hero { padding: 6rem 0 3.5rem; }
-      .hero-name { font-size: 2.25rem; }
-      .hero-title { font-size: 1.15rem; }
-      .hero-description { font-size: 1.05rem; }
-      
-      .section { padding: 4rem 0; }
-      
-      .container { padding: 0 1.5rem; }
-      
-      .hero-buttons { flex-direction: column; align-items: center; }
-      .btn { width: 100%; max-width: 300px; justify-content: center; }
-      
-      .project-card { padding: 1.5rem; }
-    }
-
-    @media (max-width: 480px) {
-      h1 { font-size: 2rem; }
-      .hero-name { font-size: 2rem; }
-      .section-title h2 { font-size: 1.6rem; }
-      .contact-item { flex-direction: column; text-align: center; gap: 0.5rem; }
-      .contact-item i { margin-bottom: 0.25rem; }
-    }
-
-    /* Accessibility & Print */
-    @media print {
-      header, footer, .hero-buttons, .project-link, .guide-card, .contact-item {
-        page-break-inside: avoid;
-      }
-      body { font-size: 12pt; color: #000; background: #fff; }
-      a { color: #000; text-decoration: underline; }
-    }
-
-    /* Smooth scroll offset for fixed header */
-    section {
-      scroll-margin-top: 80px;
-    }
-
-    /* Focus states for accessibility */
-    a:focus, button:focus, .nav-links a:focus {
-      outline: 2px solid var(--primary);
-      outline-offset: 2px;
-    }
-
-    /* Reduced motion preference */
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        transition: none !important;
-        animation: none !important;
-      }
-      html {
-        scroll-behavior: auto;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monu Prajapati | Biostatistician & Statistical Programmer</title>
+    <meta name="description" content="Monu Prajapati — Biostatistician and Statistical Programmer with experience in clinical research, survival analysis, sample size estimation, and healthcare data analytics. Skilled in SAS, R, SPSS, and Stata.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #2563eb;
+            --dark-blue: #1e40af;
+            --light-blue: #dbeafe;
+            --accent-blue: #3b82f6;
+            --white: #ffffff;
+            --soft-gray: #f9fafb;
+            --medium-gray: #f3f4f6;
+            --text-dark: #1f2937;
+            --text-medium: #4b5563;
+            --text-light: #6b7280;
+            --border-gray: #e5e7eb;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+            padding: 0.875rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-medium);
+            font-weight: 500;
+            font-size: 0.925rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-blue);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--white) 0%, var(--light-blue) 50%, #eff6ff 100%);
+            padding: 5rem 2rem 6rem;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-content h1 {
+            font-size: 3.25rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+            letter-spacing: -1px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero-title {
+            font-size: 1.35rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-summary {
+            font-size: 1.05rem;
+            color: var(--text-medium);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 0.875rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .btn {
+            padding: 0.8rem 1.6rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 2px solid transparent;
+            font-size: 0.925rem;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
+        }
+
+        .btn-primary:hover {
+            background: var(--dark-blue);
+            border-color: var(--dark-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary-blue);
+            border-color: var(--primary-blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--light-blue);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-medium);
+            border-color: var(--border-gray);
+        }
+
+        .btn-outline:hover {
+            background: var(--medium-gray);
+            border-color: var(--text-medium);
+        }
+
+        /* CROCalc CTA Button - Premium Styling */
+        .btn-crocalc {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #1e40af 100%);
+            color: var(--white);
+            border: none;
+            padding: 0.9rem 2rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.35);
+        }
+
+        .btn-crocalc::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn-crocalc:hover::before {
+            left: 100%;
+        }
+
+        .btn-crocalc:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.45);
+        }
+
+        /* Hero Image / CROCalc Card */
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 1s ease-out 0.4s both;
+        }
+
+        .crocalc-hero-card {
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
+            max-width: 440px;
+            width: 100%;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s;
+        }
+
+        .crocalc-hero-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .crocalc-hero-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .crocalc-hero-card-body {
+            padding: 1.5rem;
+        }
+
+        .crocalc-hero-card-body h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.4rem;
+        }
+
+        .crocalc-hero-card-body p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .crocalc-hero-card-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: var(--light-blue);
+            color: var(--primary-blue);
+            padding: 0.3rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.25rem;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .section-header p {
+            color: var(--text-medium);
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .bg-gray {
+            background: var(--soft-gray);
+        }
+
+        /* Featured Tool Section */
+        .featured-tool-section {
+            background: linear-gradient(135deg, #1e3a5f 0%, #1e40af 50%, #2563eb 100%);
+            color: var(--white);
+            padding: 4.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-tool-section::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .featured-tool-section::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .featured-tool-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .featured-tool-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(255,255,255,0.12);
+            padding: 0.4rem 1rem;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .featured-tool-container h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.5px;
+        }
+
+        .featured-tool-container .tool-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.92;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .featured-tool-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-featured-launch {
+            background: var(--white);
+            color: var(--primary-blue);
+            padding: 0.9rem 2rem;
+            font-weight: 700;
+            border-radius: 12px;
+            font-size: 1rem;
+        }
+
+        .btn-featured-launch:hover {
+            background: var(--light-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-featured-github {
+            background: rgba(255,255,255,0.12);
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.3);
+            padding: 0.9rem 2rem;
+            font-weight: 600;
+            border-radius: 12px;
+            font-size: 1rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .btn-featured-github:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary-blue), var(--light-blue));
+        }
+
+        .experience-card {
+            position: relative;
+            margin-left: 60px;
+            margin-bottom: 2.5rem;
+            background: var(--white);
+            border-radius: 14px;
+            padding: 2rem 2rem 2rem 2.25rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-gray);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .experience-card:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-blue);
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 2rem;
+            width: 14px;
+            height: 14px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            border: 3px solid var(--white);
+            box-shadow: 0 0 0 3px var(--primary-blue);
+        }
+
+        .experience-card-header {
+            margin-bottom: 1.25rem;
+        }
+
+        .experience-card h3 {
+            font-size: 1.35rem;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+            font-weight: 700;
+        }
+
+        .experience-company {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .experience-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .experience-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .experience-meta i {
+            color: var(--primary-blue);
+            font-size: 0.8rem;
+        }
+
+        .experience-responsibilities {
+            list-style: none;
+        }
+
+        .experience-responsibilities li {
+            padding: 0.4rem 0;
+            color: var(--text-medium);
+            position: relative;
+            padding-left: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .experience-responsibilities li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-blue);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            color: var(--white);
+            padding: 0.3rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .project-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--light-blue);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1.25rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .project-card p {
+            color: var(--text-medium);
+            margin-bottom: 1.25rem;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .project-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-features li {
+            padding: 0.35rem 0;
+            color: var(--text-medium);
+            font-size: 0.9rem;
+        }
+
+        .project-features li::before {
+            content: '✓';
+            color: var(--primary-blue);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .project-buttons {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .project-buttons .btn {
+            padding: 0.55rem 1.1rem;
+            font-size: 0.85rem;
+        }
+
+        /* Education Section */
+        .education-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary-blue), var(--accent-blue), var(--light-blue));
+        }
+
+        .education-card {
+            position: relative;
+            margin-left: 60px;
+            margin-bottom: 2rem;
+            background: var(--white);
+            border-radius: 14px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-gray);
+            transition: all 0.3s;
+        }
+
+        .education-card:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-blue);
+        }
+
+        .education-card::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 2rem;
+            width: 14px;
+            height: 14px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            border: 3px solid var(--white);
+            box-shadow: 0 0 0 3px var(--primary-blue);
+        }
+
+        .education-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .education-institution {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .education-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .education-meta i {
+            color: var(--primary-blue);
+            font-size: 0.8rem;
+        }
+
+        .education-achievement {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            color: #92400e;
+            padding: 0.3rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        /* Certifications */
+        .certifications-container {
+            max-width: 800px;
+            margin: 2.5rem auto 0;
+        }
+
+        .certifications-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1.25rem;
+            text-align: center;
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .cert-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-gray);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-blue);
+        }
+
+        .cert-icon {
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            background: var(--light-blue);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+        }
+
+        .cert-info h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.15rem;
+        }
+
+        .cert-info p {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .cert-info a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            margin-top: 0.25rem;
+            transition: color 0.3s;
+        }
+
+        .cert-info a:hover {
+            color: var(--dark-blue);
+            text-decoration: underline;
+        }
+
+        /* Guides Section */
+        .guides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .guide-card {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border-gray);
+        }
+
+        .guide-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-blue);
+        }
+
+        .guide-icon {
+            width: 72px;
+            height: 72px;
+            background: var(--light-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            color: var(--primary-blue);
+            margin: 0 auto 1.25rem;
+        }
+
+        .guide-card h3 {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .guide-card p {
+            color: var(--text-medium);
+            margin-bottom: 1.25rem;
+            line-height: 1.7;
+            font-size: 0.925rem;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.35rem;
+            color: var(--text-dark);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+        }
+
+        .skill-category h3 i {
+            color: var(--primary-blue);
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+        }
+
+        .skill-tag {
+            background: var(--light-blue);
+            color: var(--primary-blue);
+            padding: 0.5rem 1.1rem;
+            border-radius: 25px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+
+        /* Contact Section with CTA */
+        .contact-cta {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 4rem 2rem;
+            border-radius: 0;
+        }
+
+        .contact-cta h2 {
+            font-size: 2.25rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .contact-cta > .section-container > p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.92;
+        }
+
+        .cta-opportunities {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-opportunity {
+            background: rgba(255, 255, 255, 0.12);
+            padding: 0.55rem 1.25rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            backdrop-filter: blur(4px);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3.5rem;
+        }
+
+        .cta-buttons .btn {
+            font-size: 1rem;
+            padding: 0.875rem 2rem;
+        }
+
+        .btn-cta-white {
+            background: var(--white);
+            color: var(--primary-blue);
+            border-color: var(--white);
+        }
+
+        .btn-cta-white:hover {
+            background: var(--light-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .btn-cta-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.4);
+        }
+
+        .btn-cta-outline:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.7);
+            transform: translateY(-2px);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(6px);
+            border-radius: 14px;
+            padding: 1.75rem;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.14);
+            border-color: rgba(255,255,255,0.25);
+        }
+
+        .contact-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--white);
+            margin: 0 auto 1rem;
+        }
+
+        .contact-card h3 {
+            font-size: 1.1rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .contact-card a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .contact-card a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        .contact-card p {
+            color: rgba(255,255,255,0.85);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: var(--white);
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-name {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.35rem;
+        }
+
+        .footer-title {
+            color: #93c5fd;
+            margin-bottom: 1.25rem;
+            font-size: 0.925rem;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social a {
+            width: 42px;
+            height: 42px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: var(--primary-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+        }
+
+        .footer-copyright {
+            color: #6b7280;
+            font-size: 0.85rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .crocalc-hero-card {
+                max-width: 380px;
+            }
+
+            .experience-timeline::before,
+            .education-timeline::before {
+                left: 18px;
+            }
+
+            .experience-card,
+            .education-card {
+                margin-left: 48px;
+            }
+
+            .experience-card::before,
+            .education-card::before {
+                left: -37px;
+                width: 12px;
+                height: 12px;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-tool-container h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(12px);
+                flex-direction: column;
+                padding: 1rem 2rem;
+                box-shadow: var(--shadow);
+                gap: 0.75rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 3.5rem 1.5rem 4rem;
+                min-height: auto;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-title {
+                font-size: 1.15rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.85rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-cta h2 {
+                font-size: 1.85rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 3rem 1.25rem;
+            }
+
+            section {
+                padding: 3rem 1.25rem;
+            }
+
+            .hero-content h1 {
+                font-size: 1.75rem;
+            }
+
+            .btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.875rem;
+            }
+
+            .project-card,
+            .experience-card,
+            .education-card,
+            .guide-card {
+                padding: 1.5rem;
+            }
+
+            .experience-timeline::before,
+            .education-timeline::before {
+                left: 14px;
+            }
+
+            .experience-card,
+            .education-card {
+                margin-left: 40px;
+            }
+
+            .experience-card::before,
+            .education-card::before {
+                left: -33px;
+                width: 10px;
+                height: 10px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .guides-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="container">
-      <nav>
-        <div class="logo">Monu<span>Prajapati</span></div>
-        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
-          <i class="fas fa-bars"></i>
-        </button>
-        <ul class="nav-links" id="navLinks">
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#guides">Guides</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">MP</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#guides">Guides</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
 
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <div class="container">
-      <div class="hero-content">
-        <h1 class="hero-name">Monu Prajapati</h1>
-        <p class="hero-title">Biostatistician | SAS Programmer | Statistical Programmer 
-        <p class="hero-description">
-          Portfolio showcasing academic and self-initiated projects in survival analysis, clinical data analysis, and statistical programming, with applications in clinical and public health research.
-        </p>
-        <div class="hero-buttons">
-          <a href="#projects" class="btn"><i class="fas fa-folder-open"></i> View Projects</a>
-          <a href="https://monu7433.github.io/SAS_Guide/" class="btn btn-outline" target="_blank" rel="noopener"><i class="fas fa-book"></i> View SAS Guide</a>
-          <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> Contact</a>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Monu Prajapati</h1>
+                <p class="hero-title">Biostatistician | Statistical Programmer | Clinical Research Analytics</p>
+                <p class="hero-summary">
+                    Biostatistician and Statistical Programmer with experience in clinical research, survival analysis, sample size estimation, and healthcare data analytics. Skilled in SAS, R, SPSS, and Stata with hands-on experience supporting clinical studies, Statistical Analysis Plans (SAPs), and research publications. Passionate about transforming healthcare data into evidence-based insights.
+                </p>
+                <div class="hero-buttons">
+                    <a href="https://monu-bio.shinyapps.io/crocalc/" target="_blank" class="btn btn-crocalc" id="hero-crocalc-btn">
+                        🚀 Launch CROCalc
+                    </a>
+                    <a href="#projects" class="btn btn-secondary" id="hero-projects-btn">
+                        <i class="fas fa-folder-open"></i> View Projects
+                    </a>
+                    <a href="Monu_Prajapati_Resume.pdf" class="btn btn-outline" id="hero-resume-btn" download>
+                        <i class="fas fa-download"></i> Download Resume
+                    </a>
+                    <a href="#contact" class="btn btn-outline" id="hero-contact-btn">
+                        <i class="fas fa-envelope"></i> Contact Me
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="crocalc-hero-card">
+                    <img src="crocalc_screenshot.png" alt="CROCalc – Clinical Research Calculator Application Screenshot" loading="lazy">
+                    <div class="crocalc-hero-card-body">
+                        <span class="crocalc-hero-card-badge"><i class="fas fa-flask"></i> Live Application</span>
+                        <h3>CROCalc</h3>
+                        <p>Sample Size & Clinical Research Calculator</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Projects Section -->
-  <section class="section" id="projects">
-    <div class="container">
-      <div class="section-title">
-        <h2>Academic and Personal Projects</h2>
-      </div>
-      <p class="section-note">
-        These projects demonstrate my academic training and practical skills in statistical programming and biostatistics.
-      </p>
-      
-      <div class="projects-grid">
-        <!-- Project 1 -->
-        <div class="project-card">
-          <h3>Survival Analysis — METABRIC Breast Cancer Dataset</h3>
-          <p>Performed survival analysis using Kaplan–Meier estimation and Cox Proportional Hazards models in SAS and R. Included data preprocessing, handling of censored data, and interpretation of hazard ratios.</p>
-          <a href="https://github.com/Monu7433/Survival_Analysis_Project" class="project-link" target="_blank" rel="noopener">
-            View Project <i class="fas fa-arrow-right"></i>
-          </a>
+    <!-- Featured Tool Section -->
+    <section class="featured-tool-section" id="featured-tool">
+        <div class="featured-tool-container">
+            <span class="featured-tool-label"><i class="fas fa-star"></i> Featured Tool</span>
+            <h2>CROCalc – Clinical Research Calculator</h2>
+            <p class="tool-description">
+                Free web application for sample size calculation, clinical research planning, and statistical utilities for researchers, students, and healthcare professionals. Built with R Shiny to support data-driven study design and statistical estimation.
+            </p>
+            <div class="featured-tool-buttons">
+                <a href="https://monu-bio.shinyapps.io/crocalc/" target="_blank" class="btn btn-featured-launch" id="featured-launch-btn">
+                    <i class="fas fa-rocket"></i> Launch App
+                </a>
+                <a href="https://github.com/Monu7433" target="_blank" class="btn btn-featured-github" id="featured-github-btn">
+                    <i class="fab fa-github"></i> GitHub Source
+                </a>
+            </div>
         </div>
-        
-        <!-- Project 2 -->
-        <div class="project-card">
-          <h3>Chronic Disease Analysis — NFHS Secondary Data</h3>
-          <p>Analyzed national health survey data using SAS, SPSS, and R. Applied logistic regression to identify risk factors and interpret associations with chronic diseases.</p>
-          <a href="https://github.com/Monu7433/MSc-Chronic-Disease-Analysis" class="project-link" target="_blank" rel="noopener">
-            View Project <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-        
-        <!-- Project 3 -->
-        <div class="project-card">
-          <h3>NHANES Exploratory Data Analysis</h3>
-          <p>Conducted exploratory data analysis using R, including data cleaning, visualization, and descriptive statistical analysis.</p>
-          <a href="https://github.com/Monu7433/NHANES-EDA-R" class="project-link" target="_blank" rel="noopener">
-            View Project <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-        
-        <!-- Project 4 -->
-        <div class="project-card">
-          <h3>Netflix Exploratory Data Analysis</h3>
-          <p>Performed exploratory analysis using Python to understand dataset structure, trends, and distributions.</p>
-          <a href="https://github.com/Monu7433/netflix_eda" class="project-link" target="_blank" rel="noopener">
-            View Project <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Guides Section -->
-  <section class="section" id="guides" style="background: var(--background-alt);">
-    <div class="container">
-      <div class="section-title">
-        <h2>Statistical Programming Guides</h2>
-      </div>
-      <p class="section-note">
-        Self-developed educational guides demonstrating statistical programming concepts and workflows in SAS, R, SPSS, and Stata.
-      </p>
-      
-      <div class="guides-grid">
-        <a href="https://monu7433.github.io/SAS_Guide/" class="guide-card" target="_blank" rel="noopener">
-          <i class="fas fa-file-code"></i>
-          <h3>SAS Guide</h3>
-          <span>monu7433.github.io/SAS_Guide</span>
-        </a>
-        
-        <a href="https://monu7433.github.io/R_Guide/" class="guide-card" target="_blank" rel="noopener">
-          <i class="fab fa-r-project"></i>
-          <h3>R Guide</h3>
-          <span>monu7433.github.io/R_Guide</span>
-        </a>
-        
-        <a href="https://monu7433.github.io/Spss_Guide/" class="guide-card" target="_blank" rel="noopener">
-          <i class="fas fa-chart-bar"></i>
-          <h3>SPSS Guide</h3>
-          <span>monu7433.github.io/Spss_Guide</span>
-        </a>
-        
-        <a href="https://monu7433.github.io/stata-guide/" class="guide-card" target="_blank" rel="noopener">
-          <i class="fas fa-database"></i>
-          <h3>Stata Guide</h3>
-          <span>monu7433.github.io/stata-guide</span>
-        </a>
-      </div>
-    </div>
-  </section>
+    <!-- Experience Section -->
+    <section id="experience" class="bg-gray">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Professional Experience</h2>
+                <p>Hands-on experience in clinical research, statistical programming, and healthcare data analysis</p>
+            </div>
+            <div class="experience-timeline">
+                <!-- Statistician -->
+                <div class="experience-card" id="exp-statistician">
+                    <div class="experience-card-header">
+                        <h3>Statistician</h3>
+                        <p class="experience-company">Research & Development Cell, Pramukhswami Medical College</p>
+                        <div class="experience-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Anand, Gujarat</span>
+                            <span><i class="fas fa-calendar-alt"></i> Apr 2025 – Apr 2026</span>
+                        </div>
+                    </div>
+                    <ul class="experience-responsibilities">
+                        <li>Conducted statistical analysis for clinical trial datasets using R and SPSS — regression, survival models, and hypothesis testing</li>
+                        <li>Performed sample size estimation and contributed to Statistical Analysis Plans (SAPs)</li>
+                        <li>Generated clinical documentation outputs including tables, listings, and figures (TLFs)</li>
+                        <li>Designed TLFs for medical research reports in compliance with clinical standards</li>
+                    </ul>
+                </div>
 
-  <!-- Skills Section -->
-  <section class="section" id="skills">
-    <div class="container">
-      <div class="section-title">
-        <h2>Technical Skills</h2>
-      </div>
-      
-      <div class="skills-container">
-        <div class="skill-category">
-          <h3><i class="fas fa-laptop-code"></i> Statistical Software</h3>
-          <div class="skills-list">
-            <span class="skill-badge">SAS</span>
-            <span class="skill-badge">R</span>
-            <span class="skill-badge">SPSS</span>
-            <span class="skill-badge">Stata</span>
-            <span class="skill-badge">Excel</span>
-            <span class="skill-badge">Python (Pandas)</span>
-          </div>
-        </div>
-        
-        <div class="skill-category">
-          <h3><i class="fas fa-brain"></i> Statistical Methods</h3>
-          <div class="skills-list">
-            <span class="skill-badge">Survival Analysis</span>
-            <span class="skill-badge">Kaplan–Meier Estimation</span>
-            <span class="skill-badge">Cox Proportional Hazards Model</span>
-            <span class="skill-badge">Logistic Regression</span>
-            <span class="skill-badge">Statistical Modeling</span>
-            <span class="skill-badge">Data Visualization</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+                <!-- Freelance Consultant -->
+                <div class="experience-card" id="exp-freelance">
+                    <div class="experience-card-header">
+                        <h3>Freelance Biostatistics Consultant</h3>
+                        <p class="experience-company">Qrec Clinical Research LLP</p>
+                        <div class="experience-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Remote</span>
+                            <span><i class="fas fa-calendar-alt"></i> Aug 2025 – Present</span>
+                        </div>
+                    </div>
+                    <ul class="experience-responsibilities">
+                        <li>Performed statistical analysis of clinical and healthcare datasets using SAS and R</li>
+                        <li>Delivered reproducible, publication-ready outputs including tables, graphs, and statistical models</li>
+                        <li>Supported study design decisions with statistical insights, power analysis, and endpoint evaluation</li>
+                    </ul>
+                </div>
 
-  <!-- About Section -->
-  <section class="section" id="about" style="background: var(--background-alt);">
-    <div class="container">
-      <div class="section-title">
-        <h2>About Me</h2>
-      </div>
-      <div class="about-content">
-        <p>
-          I am a Biostatistician and Gold Medalist in Applied Statistics with academic experience in survival analysis, clinical data analysis, and statistical programming using SAS and R.
-        </p>
-        <p>
-          My work includes analysis of clinical and public health datasets, applying survival models, regression techniques, and statistical programming methods.
-        </p>
-        <p>
-          This portfolio presents my academic projects and programming guides, demonstrating my readiness for entry-level roles in biostatistics and statistical programming.
-        </p>
-      </div>
-    </div>
-  </section>
+                <!-- MOSPI Intern -->
+                <div class="experience-card" id="exp-mospi">
+                    <div class="experience-card-header">
+                        <h3>Summer Intern</h3>
+                        <p class="experience-company">MOSPI (Ministry of Statistics and Programme Implementation)</p>
+                        <div class="experience-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Ahmedabad</span>
+                            <span><i class="fas fa-calendar-alt"></i> Jun 2024 – Aug 2024</span>
+                        </div>
+                    </div>
+                    <ul class="experience-responsibilities">
+                        <li>Gained practical exposure to national-level statistical surveys (NFHS, NSSO) and large government datasets</li>
+                        <li>Applied data cleaning, transformation, and statistical analysis using R and Excel on structured real-world datasets</li>
+                        <li>Delivered a presentation on the importance of data at MOSPI, Ahmedabad, during the 18th Statistics Day</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Contact Section -->
-  <section class="section" id="contact">
-    <div class="container">
-      <div class="section-title">
-        <h2>Get In Touch</h2>
-      </div>
-      
-      <p class="contact-intro">
-        Available for entry-level opportunities in biostatistics and statistical programming.
-      </p>
-      
-      <div class="contact-container">
-        <div class="contact-item">
-          <i class="fas fa-envelope"></i>
-          <a href="mailto:prajapatimonu7433@gmail.com">prajapatimonu7433@gmail.com</a>
-        </div>
-        
-        <div class="contact-item">
-          <i class="fab fa-linkedin"></i>
-          <a href="https://www.linkedin.com/in/monu-prajapati-9ba4b4221/" target="_blank" rel="noopener">linkedin.com/in/monu-prajapati</a>
-        </div>
-        
-        <div class="contact-item">
-          <i class="fab fa-github"></i>
-          <a href="https://github.com/Monu7433" target="_blank" rel="noopener">github.com/Monu7433</a>
-        </div>
-        
-        <div class="contact-item">
-          <i class="fas fa-phone"></i>
-          <span>+91 74338 63551</span>
-        </div>
-      </div>
-    </div>
-  </section>
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Projects</h2>
+                <p>Applied biostatistics and clinical research projects demonstrating real-world analytical skills</p>
+            </div>
+            <div class="projects-grid">
+                <!-- CROCalc -->
+                <div class="project-card" id="project-crocalc">
+                    <span class="featured-badge">⭐ Featured</span>
+                    <div class="project-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>CROCalc – Clinical Research Calculator</h3>
+                    <p>Built a free, open-source web application using R Shiny for sample size calculation, clinical research planning, and statistical utilities — used by researchers, students, and healthcare professionals for data-driven study design.</p>
+                    <ul class="project-features">
+                        <li>Sample size & power calculation</li>
+                        <li>Clinical research planning utilities</li>
+                        <li>Interactive R Shiny interface</li>
+                        <li>Research methodology support</li>
+                    </ul>
+                    <div class="project-buttons">
+                        <a href="https://monu-bio.shinyapps.io/crocalc/" target="_blank" class="btn btn-primary" id="project-crocalc-live">
+                            <i class="fas fa-external-link-alt"></i> Live App
+                        </a>
+                        <a href="https://github.com/Monu7433" target="_blank" class="btn btn-secondary" id="project-crocalc-github">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>Personal portfolio for job applications and academic demonstration.</p>
-      <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.9;">
-        &copy; <span id="year"></span> Monu Prajapati. All rights reserved.
-      </p>
-    </div>
-  </footer>
+                <!-- Survival Analysis -->
+                <div class="project-card" id="project-survival">
+                    <div class="project-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Survival Analysis — METABRIC Breast Cancer Dataset</h3>
+                    <p>Analyzed time-to-event outcomes in clinical breast cancer data using Kaplan–Meier estimation and Cox Proportional Hazards modeling. Interpreted hazard ratios, confidence intervals, and treatment effects with censored observations in SAS and R.</p>
+                    <ul class="project-features">
+                        <li>Kaplan–Meier survival estimation</li>
+                        <li>Cox PH model & hazard ratio interpretation</li>
+                        <li>SAS (PROC LIFETEST, PROC PHREG) & R</li>
+                        <li>Clinical data preprocessing & validation</li>
+                    </ul>
+                    <div class="project-buttons">
+                        <a href="https://github.com/Monu7433/Survival_Analysis_Project" target="_blank" class="btn btn-primary" id="project-survival-github">
+                            <i class="fab fa-github"></i> View Repository
+                        </a>
+                    </div>
+                </div>
 
-  <!-- JavaScript -->
-  <script>
-    // Mobile navigation toggle
-    const mobileToggle = document.getElementById('mobileToggle');
-    const navLinks = document.getElementById('navLinks');
-    
-    mobileToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      mobileToggle.innerHTML = navLinks.classList.contains('active') 
-        ? '<i class="fas fa-times"></i>' 
-        : '<i class="fas fa-bars"></i>';
-    });
-    
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
-      });
-    });
-    
-    // Dynamic year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
-    
-    // Smooth scroll for anchor links (enhanced compatibility)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          window.scrollTo({
-            top: target.offsetTop - 80,
-            behavior: 'smooth'
-          });
+                <!-- Chronic Disease -->
+                <div class="project-card" id="project-chronic">
+                    <div class="project-icon">
+                        <i class="fas fa-notes-medical"></i>
+                    </div>
+                    <h3>Chronic Disease Analysis — NFHS Secondary Data</h3>
+                    <p>Estimated prevalence and identified risk factors for diabetes, hypertension, and cancer using nationally representative NFHS data. Applied multivariable logistic regression to compute adjusted odds ratios with 95% confidence intervals across SAS, R, and SPSS.</p>
+                    <ul class="project-features">
+                        <li>Logistic regression & odds ratio estimation</li>
+                        <li>National health survey data (NFHS)</li>
+                        <li>Multi-platform analysis (SAS, R, SPSS)</li>
+                        <li>Chi-square & descriptive statistics</li>
+                    </ul>
+                    <div class="project-buttons">
+                        <a href="https://github.com/Monu7433/MSc-Chronic-Disease-Analysis" target="_blank" class="btn btn-primary" id="project-chronic-github">
+                            <i class="fab fa-github"></i> View Repository
+                        </a>
+                    </div>
+                </div>
+
+                <!-- NHANES EDA -->
+                <div class="project-card" id="project-nhanes">
+                    <div class="project-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>NHANES Exploratory Data Analysis</h3>
+                    <p>Conducted end-to-end exploratory data analysis on NHANES healthcare data using R — including data cleaning, transformation, descriptive statistics, and visualization — to uncover patterns in population health indicators.</p>
+                    <ul class="project-features">
+                        <li>Data cleaning & preprocessing in R</li>
+                        <li>Statistical visualization (ggplot2)</li>
+                        <li>Descriptive statistics & distributions</li>
+                        <li>Healthcare dataset exploration</li>
+                    </ul>
+                    <div class="project-buttons">
+                        <a href="https://github.com/Monu7433/NHANES-EDA-R" target="_blank" class="btn btn-primary" id="project-nhanes-github">
+                            <i class="fab fa-github"></i> View Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="bg-gray">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Education</h2>
+                <p>Academic foundation in applied statistics and quantitative methods</p>
+            </div>
+            <div class="education-timeline">
+                <!-- M.Sc. -->
+                <div class="education-card" id="edu-msc">
+                    <h3>Master of Science in Applied Statistics</h3>
+                    <p class="education-institution">Sardar Patel University, Anand, Gujarat</p>
+                    <div class="education-meta">
+                        <span><i class="fas fa-calendar-alt"></i> Jun 2023 – Apr 2025</span>
+                        <span><i class="fas fa-graduation-cap"></i> CGPA: 7.89</span>
+                    </div>
+                    <span class="education-achievement">🏅 Gold Medal — First Rank</span>
+                </div>
+
+                <!-- B.Sc. -->
+                <div class="education-card" id="edu-bsc">
+                    <h3>Bachelor of Science in Statistics</h3>
+                    <p class="education-institution">M.G. Science Institute, Ahmedabad, Gujarat</p>
+                    <div class="education-meta">
+                        <span><i class="fas fa-calendar-alt"></i> Jun 2020 – Apr 2023</span>
+                        <span><i class="fas fa-graduation-cap"></i> CGPA: 8.3</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="certifications-container">
+                <h3 class="certifications-title"><i class="fas fa-certificate" style="color: var(--primary-blue); margin-right: 0.5rem;"></i>Certifications</h3>
+                <div class="certifications-grid">
+                    <div class="cert-card" id="cert-sas-doing-more">
+                        <div class="cert-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="cert-info">
+                            <h4>Doing More with SAS</h4>
+                            <p>SAS Institute — Coursera</p>
+                            <a href="https://www.coursera.org/account/accomplishments/verify/3ALJXA884ISS" target="_blank">
+                                View Certificate <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="cert-card" id="cert-sas-getting-started">
+                        <div class="cert-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="cert-info">
+                            <h4>Getting Started with SAS</h4>
+                            <p>SAS Institute — Coursera (Apr 2025)</p>
+                            <a href="https://www.coursera.org/account/accomplishments/verify/XA73ZAB1PV7S" target="_blank">
+                                View Certificate <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="cert-card" id="cert-r-data-analysis">
+                        <div class="cert-icon">
+                            <i class="fab fa-r-project"></i>
+                        </div>
+                        <div class="cert-info">
+                            <h4>Data Analysis with R</h4>
+                            <p>IBM — Coursera (Mar 2025)</p>
+                            <a href="https://www.coursera.org/account/accomplishments/verify/Z2QKBDX0M2GG" target="_blank">
+                                View Certificate <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="cert-card" id="cert-excel">
+                        <div class="cert-icon">
+                            <i class="fas fa-table"></i>
+                        </div>
+                        <div class="cert-info">
+                            <h4>Getting Started with Microsoft Excel</h4>
+                            <p>Coursera (Apr 2024)</p>
+                            <a href="https://www.coursera.org/account/accomplishments/verify/K6SGRBZTYGJD" target="_blank">
+                                View Certificate <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guides Section -->
+    <section id="guides">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Statistical Programming Guides</h2>
+                <p>Comprehensive learning resources for statistical software and biostatistics workflows</p>
+            </div>
+            <div class="guides-grid">
+                <div class="guide-card" id="guide-sas">
+                    <div class="guide-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>SAS Programming Guide</h3>
+                    <p>Comprehensive SAS learning resource covering DATA step, PROC procedures, SQL, macros, reporting, survival analysis, and statistical programming concepts.</p>
+                    <a href="https://monu7433.github.io/SAS_Guide" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-external-link-alt"></i> Visit Guide
+                    </a>
+                </div>
+                <div class="guide-card" id="guide-r">
+                    <div class="guide-icon">
+                        <i class="fab fa-r-project"></i>
+                    </div>
+                    <h3>R Programming Guide</h3>
+                    <p>Practical R guide covering data manipulation, visualization, regression, statistical modeling, and biostatistics workflows.</p>
+                    <a href="https://monu7433.github.io/R_Guide" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-external-link-alt"></i> Visit Guide
+                    </a>
+                </div>
+                <div class="guide-card" id="guide-spss">
+                    <div class="guide-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>SPSS Guide</h3>
+                    <p>Step-by-step SPSS guide covering descriptive statistics, hypothesis testing, regression, and interpretation of results.</p>
+                    <a href="https://monu7433.github.io/Spss_Guide" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-external-link-alt"></i> Visit Guide
+                    </a>
+                </div>
+                <div class="guide-card" id="guide-stata">
+                    <div class="guide-icon">
+                        <i class="fas fa-table"></i>
+                    </div>
+                    <h3>Stata Guide</h3>
+                    <p>Guide covering data management, epidemiological analysis, and statistical modeling workflows in Stata.</p>
+                    <a href="https://monu7433.github.io/stata-guide" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-external-link-alt"></i> Visit Guide
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="bg-gray">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Technical Skills</h2>
+                <p>Proficient in industry-standard statistical software and clinical research methodologies</p>
+            </div>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3><i class="fas fa-laptop-code"></i> Statistical Software</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">SAS</span>
+                        <span class="skill-tag">R</span>
+                        <span class="skill-tag">SPSS</span>
+                        <span class="skill-tag">Stata</span>
+                        <span class="skill-tag">Excel</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-flask"></i> Biostatistics & Clinical Research</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Statistical Programming</span>
+                        <span class="skill-tag">Clinical Research</span>
+                        <span class="skill-tag">Survival Analysis</span>
+                        <span class="skill-tag">Kaplan–Meier Analysis</span>
+                        <span class="skill-tag">Cox Proportional Hazards Modeling</span>
+                        <span class="skill-tag">Logistic Regression</span>
+                        <span class="skill-tag">Sample Size Estimation</span>
+                        <span class="skill-tag">SAP Development</span>
+                        <span class="skill-tag">Healthcare Data Analysis</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section (merged with CTA) -->
+    <section id="contact" class="contact-cta">
+        <div class="section-container">
+            <h2>Let's Connect</h2>
+            <p>Open to opportunities in biostatistics, statistical programming, and clinical research analytics</p>
+            <div class="cta-opportunities">
+                <span class="cta-opportunity">Entry-Level Biostatistician</span>
+                <span class="cta-opportunity">Statistical Programmer</span>
+                <span class="cta-opportunity">Clinical Data Analyst</span>
+                <span class="cta-opportunity">Clinical Research Analyst</span>
+            </div>
+            <div class="cta-buttons">
+                <a href="Monu_Prajapati_Resume.pdf" class="btn btn-cta-white" id="contact-resume-btn" download>
+                    <i class="fas fa-download"></i> Download Resume
+                </a>
+                <a href="mailto:prajapatimonu7433@gmail.com" class="btn btn-cta-outline" id="contact-email-btn">
+                    <i class="fas fa-envelope"></i> Email Me
+                </a>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card" id="contact-card-email">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <a href="mailto:prajapatimonu7433@gmail.com">prajapatimonu7433@gmail.com</a>
+                </div>
+                <div class="contact-card" id="contact-card-linkedin">
+                    <div class="contact-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <h3>LinkedIn</h3>
+                    <a href="https://www.linkedin.com/in/monu-prajapati" target="_blank">View Profile</a>
+                </div>
+                <div class="contact-card" id="contact-card-github">
+                    <div class="contact-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3>GitHub</h3>
+                    <a href="https://github.com/Monu7433" target="_blank">View Profile</a>
+                </div>
+                <div class="contact-card" id="contact-card-phone">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Phone</h3>
+                    <p>+91 74338 63551</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-name">Monu Prajapati</div>
+            <div class="footer-title">Biostatistician | Statistical Programmer | Clinical Research Analytics</div>
+            <div class="footer-social">
+                <a href="mailto:prajapatimonu7433@gmail.com" title="Email" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/monu-prajapati" target="_blank" title="LinkedIn" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/Monu7433" target="_blank" title="GitHub" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <div class="footer-copyright">
+                © 2026 Monu Prajapati. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
         }
-      });
-    });
-    
-    // Add subtle animation on scroll for project cards
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, observerOptions);
-    
-    // Observe project cards
-    document.querySelectorAll('.project-card, .guide-card').forEach(card => {
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(20px)';
-      card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-      observer.observe(card);
-    });
-  </script>
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Active nav highlight on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section[id]');
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.style.color = '';
+                link.style.fontWeight = '';
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.style.color = 'var(--primary-blue)';
+                    link.style.fontWeight = '700';
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.project-card, .experience-card, .education-card, .guide-card, .contact-card, .cert-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(card);
+        });
+    </script>
 </body>
 </html>
